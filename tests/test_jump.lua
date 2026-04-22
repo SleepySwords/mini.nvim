@@ -1457,4 +1457,13 @@ T['Events']['work with dot-repeat'] = function()
   })
 end
 
+T['Events']['till operator initially considers current position'] = function()
+  type_keys('t', 'o')
+  eq(get_cursor(), { 1, 0 })
+  sleep(default_highlight_delay + small_time)
+
+  type_keys('t', 'o')
+  eq(get_cursor(), { 1, 0 })
+end
+
 return T

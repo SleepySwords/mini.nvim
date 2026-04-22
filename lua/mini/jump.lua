@@ -462,6 +462,9 @@ H.make_search_data = function()
       pattern = [[\_.\ze]] .. target
       hl_pattern = [[\_.\@<=]] .. target
     end
+
+    -- Include cursor position for the initial "till" jump to match native Vim.
+    if not MiniJump.state.jumping then flags = flags .. 'c' end
   else
     local is_visual = vim.tbl_contains({ 'v', 'V', '\22' }, vim.fn.mode())
     local is_exclusive = vim.o.selection == 'exclusive'
